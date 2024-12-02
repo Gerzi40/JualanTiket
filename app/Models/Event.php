@@ -17,4 +17,7 @@ class Event extends Model
         'description',
         'terms'
     ];
+    public function transactions(){
+        return $this->hasMany('transactions');
+    }
 }

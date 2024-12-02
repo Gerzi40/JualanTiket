@@ -11,4 +11,10 @@ class Transaction extends Model
         'event_id',
         'total_ticket'
     ];
+    public function user(){
+        return $this->belongsTo('users');
+    }
+    public function event(){
+        return $this->belongsTo('events');
+    }
 }
