@@ -1,10 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
-    return view('page.admin.home');
+    if (Auth::check()) {
+        Auth::logout();
+    }
+    return view('page.guest.home');
 });
 
 Route::controller(AuthController::class)
@@ -21,7 +27,25 @@ Route::controller(AuthController::class)
         Route::post('/logout', 'logout')->name('auth.logout');
     });
 
-// user/customer
-Route::get('/eventlist', function(){return view('page.user.event');});
+Route::middleware(['auth'])->group(function () {
+    Route::controller(UserController::class)
+        ->name('user.')
+        ->group(function () {
+            Route::get('user/home', 'index')->name('home');
+        });
+});
 
-//admin
+Route::middleware(['auth:admin'])->group(function () {
+    Route::controller(AdminController::class)
+        ->name('admin.')
+        ->group(function () {
+            Route::get('admin/home', 'index')->name('home');
+        });
+});
+
+// user/customer
+Route::get('/eventlist', function () {
+    return view('page.user.event');
+});
+
+// admin
