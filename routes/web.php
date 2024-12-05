@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -44,8 +45,6 @@ Route::middleware(['auth:admin'])->group(function () {
 });
 
 // user/customer
-Route::get('/eventlist', function () {
-    return view('page.user.event');
-});
+Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventlist');
 
 // admin

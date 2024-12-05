@@ -10,6 +10,7 @@ class EventController extends Controller
     //
     public function getEventList(){
         $events = Event::all();
+        // dd($events);
         return view('page.user.event', compact('events'));
     }
 
