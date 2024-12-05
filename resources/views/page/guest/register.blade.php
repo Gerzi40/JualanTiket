@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.guest.master')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">

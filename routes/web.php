@@ -7,12 +7,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
 
-Route::get('/', function () {
-    if (Auth::check()) {
-        Auth::logout();
-    }
-    return view('page.guest.home');
-});
+// Route::get('/', function () {
+//     if (Auth::check()) {
+//         Auth::logout();
+//     }
+//     return view('page.guest.home');
+// });
+
+
 
 Route::controller(AuthController::class)
     ->group(function () {
@@ -44,7 +46,8 @@ Route::middleware(['auth:admin'])->group(function () {
         });
 });
 
-// user/customer
+// guest
+Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventlist');
+Route::get('/eventdetail/{id}', [EventController::class, 'getEventDetail'])->name('eventDetail');
 
-// admin

@@ -25,7 +25,7 @@
 
 <body>
 
-    @include('layout.header')
+    @include('layout.guest.header')
 
     @yield('content')
 

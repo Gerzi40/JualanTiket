@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('time');
             $table->text('description');
             $table->text('terms');
+            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
             // $table->timestamps();
         });
     }

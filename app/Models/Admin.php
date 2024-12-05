@@ -12,4 +12,7 @@ class Admin extends Authenticatable
         'email',
         'password'
     ];
+    public function events(){
+        return $this->hasMany('events');
+    }
 }

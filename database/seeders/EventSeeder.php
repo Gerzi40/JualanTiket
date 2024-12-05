@@ -25,7 +25,8 @@ class EventSeeder extends Seeder
                 'date' => $faker->date(),
                 'time' => 'time',
                 'description' => $faker->paragraphs(2, true),
-                'terms' => 'terms'
+                'terms' => 'terms',
+                'admin_id' => 1
             ]);
         }
     }

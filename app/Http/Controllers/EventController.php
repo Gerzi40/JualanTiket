@@ -7,15 +7,21 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    //
-    public function getEventList(){
+    // guest role
+    public function index()
+    {
         $events = Event::all();
         // dd($events);
-        return view('page.user.event', compact('events'));
+        return view('page.guest.home', compact('events'));
     }
-
-    public function getEventDetail($id){
-        $eventDetail = Event::findorfail($id);
-        return view('page.user.detail', compact('eventDetail'));
+    public function getEventDetail($id)
+    {
+        $event = Event::findorfail($id);
+        return view('page.guest.detail', compact('event'));
+    }
+    public function getEventList()
+    {
+        $events = Event::paginate(3);
+        return view('page.guest.event', compact('events'));
     }
 }
