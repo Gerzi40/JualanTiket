@@ -82,4 +82,9 @@ class AuthController extends Controller
             return redirect()->route('user.home');
         }
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('home');
+    }
 }

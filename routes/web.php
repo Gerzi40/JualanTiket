@@ -27,7 +27,7 @@ Route::controller(AuthController::class)
         Route::post('/register-user', 'attemptRegister')->name('auth.attemptRegister');
 
         // Logout
-        Route::post('/logout', 'logout')->name('auth.logout');
+        Route::get('/logout', 'logout')->name('auth.logout');
     });
 
 Route::middleware(['auth'])->group(function () {
