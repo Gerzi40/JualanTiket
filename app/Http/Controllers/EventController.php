@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\TicketCategory;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -17,7 +18,8 @@ class EventController extends Controller
     public function getEventDetail($id)
     {
         $event = Event::findorfail($id);
-        return view('page.guest.detail', compact('event'));
+        $tickets = TicketCategory::where('event_id', $event->id)->get();
+        return view('page.guest.detail', compact('event', 'tickets'));
     }
     public function getEventList()
     {

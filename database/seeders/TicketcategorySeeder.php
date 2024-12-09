@@ -20,12 +20,12 @@ class TicketcategorySeeder extends Seeder
         ]);
         TicketCategory::create([
             'name' => 'vip',
-            'price' => 50,
+            'price' => 100,
             'event_id' => 1
         ]);
         TicketCategory::create([
             'name' => 'vvip',
-            'price' => 50,
+            'price' => 200,
             'event_id' => 1
         ]);
     }
