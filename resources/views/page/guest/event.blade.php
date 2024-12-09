@@ -4,9 +4,15 @@
 <div class="container-fluid">
     {{-- Sorting? --}}
     <div class="d-flex justify-content-end">
-        <div class="">
-            <p>Urutkan</p>
-        </div>
+        <form class="d-flex gap-2">
+            <p class="m-0">Urutkan: </p>
+            <select name="sort" onchange="this.form.submit()">
+                <option value="">-- Sort --</option>
+                <option value="name">Name</option>
+                <option value="price">Price</option>
+                <option value="date">Date</option>
+            </select>
+        </form>
     </div>
     {{-- Event List --}}
     <div class="mt-5">
