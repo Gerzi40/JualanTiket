@@ -6,7 +6,7 @@ use App\Models\TicketCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TicketcategorySeeder extends Seeder
+class TicketCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
