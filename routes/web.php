@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
         ->name('user.')
         ->group(function () {
             Route::get('user/home', 'index')->name('home');
+            Route::get('user/eventdetail/{id}', 'getEventDetail')->name('eventDetail');
+            Route::post('user/payment', 'testOnly')->name('paymentTest');
         });
 });
 

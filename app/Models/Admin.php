@@ -13,6 +13,6 @@ class Admin extends Authenticatable
         'password'
     ];
     public function events(){
-        return $this->hasMany('events');
+        return $this->hasMany(Event::class);
     }
 }

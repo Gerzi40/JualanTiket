@@ -10,9 +10,16 @@ class TicketCategory extends Model
     protected $fillable = [
         'name',
         'price',
-        'event_id'
+        'event_id',
+        'deadline',
+        'stock'
     ];
+
+    protected $casts = [
+        'deadline' => 'datetime',
+    ];
+
     public function event(){
-        return $this->belongsTo('events');
+        return $this->belongsTo(Event::class);
     }
 }

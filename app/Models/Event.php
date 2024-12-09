@@ -18,12 +18,12 @@ class Event extends Model
         'terms'
     ];
     public function transactions(){
-        return $this->hasMany('transactions');
+        return $this->hasMany(Transaction::class);
     }
     public function ticketcategories(){
-        return $this->hasMany('ticketcategories');
+        return $this->hasMany(TicketCategory::class);
     }
     public function admin(){
-        return $this->belongsTo('admins');
+        return $this->belongsTo(Admin::class);
     }
 }
