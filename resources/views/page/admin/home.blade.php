@@ -40,24 +40,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr style="background-color: black">
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>
-                        <button class="btn btn-primary">View</button>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>
-                        <button class="btn btn-primary">View</button>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                @foreach ($events as $event)    
+                    <tr style="background-color: black">
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $event->name }}</td>
+                        <td>
+                            <button class="btn btn-primary">View</button>
+                            <button class="btn btn-warning">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('page.admin.home');
+        $events = Event::get();
+        return view('page.admin.home', compact('events'));
     }
 
     public function category()
