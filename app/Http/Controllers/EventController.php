@@ -15,10 +15,11 @@ class EventController extends Controller
         // dd($events);
         return view('page.guest.home', compact('events'));
     }
+    
     public function getEventDetail($id)
     {
         $event = Event::findorfail($id);
-        $tickets = TicketCategory::where('event_id', $event->id)->get();
+        $tickets = TicketCategory::with('event')->where('event_id', $id)->get();
         return view('page.guest.detail', compact('event', 'tickets'));
     }
     public function getEventList(Request $req)

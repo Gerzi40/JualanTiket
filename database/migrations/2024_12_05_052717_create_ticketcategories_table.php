@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->double('price');
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->dateTime('deadline');
+            $table->bigInteger('stock');
             $table->timestamps();
         });
     }

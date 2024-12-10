@@ -26,7 +26,8 @@ class TransactionSeeder extends Seeder
             Transaction::create([
                 'user_id' => $users->random()->id,
                 'event_id' => $events->random()->id,
-                'total_ticket' => $faker->randomDigitNot(0)
+                'total_ticket' => $faker->randomDigitNot(0),
+                'transaction_dateTime' => $faker->dateTime(),
             ]);
         }
 
