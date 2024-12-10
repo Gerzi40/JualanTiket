@@ -4,9 +4,15 @@
 <div class="container-fluid">
     {{-- Sorting? --}}
     <div class="d-flex justify-content-end">
-        <div class="">
-            <p>Urutkan</p>
-        </div>
+        <form class="d-flex gap-2">
+            <p class="m-0">Urutkan: </p>
+            <select name="sort" onchange="this.form.submit()">
+                <option value="">-- Sort --</option>
+                <option value="name">Name</option>
+                <option value="price">Price</option>
+                <option value="date">Date</option>
+            </select>
+        </form>
     </div>
     {{-- Event List --}}
     <div class="mt-5">
@@ -16,7 +22,7 @@
                     <img src="/assets/events/event_test_image.png" class="card-img-top" alt="ini image">
                     <div class="card-body">
                         <h5 class="card-title">{{ $event->name }}</h5>
-                        <p class="card-text">{{ $event->date }}</p>
+                        <p class="card-text">{{ $event->date->format('d M Y') }}</p>
                         <p class="card-text">{{ $event->location }}</p>
                         <p class="card-text">Rp.{{ number_format($event->price, 2, ',', '.') }}</p>
                         <a href="{{route('eventDetail', ['id' => $event->id])}}" class="btn btn-primary">Go Detail</a>

@@ -17,6 +17,9 @@ class Event extends Model
         'description',
         'terms'
     ];
+    protected $casts = [
+        'date' => 'datetime'
+    ];
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }
