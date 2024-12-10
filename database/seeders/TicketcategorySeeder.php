@@ -14,17 +14,17 @@ class TicketCategorySeeder extends Seeder
     public function run(): void
     {
         TicketCategory::create([
-            'name' => 'normal',
+            'name' => 'Normal',
             'price' => 50,
             'event_id' => 1
         ]);
         TicketCategory::create([
-            'name' => 'vip',
+            'name' => 'VIP',
             'price' => 100,
             'event_id' => 1
         ]);
         TicketCategory::create([
-            'name' => 'vvip',
+            'name' => 'VVIP',
             'price' => 200,
             'event_id' => 1
         ]);
