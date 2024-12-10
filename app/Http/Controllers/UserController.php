@@ -13,12 +13,20 @@ class UserController extends Controller
         $events = Event::all();
         return view('page.user.home', compact('events'));
     }
+
+    public function getEventList()
+    {
+        $events = Event::paginate(3);
+        return view('page.user.event', compact('events'));
+    }
+
     public function getEventDetail($id)
     {
         $event = Event::findorfail($id);
         $tickets = TicketCategory::with('event')->where('event_id', $id)->get();
         return view('page.user.detail', compact('event', 'tickets'));
     }
+
     public function testOnly(Request $request){
 
         $validated = $request->validate([
@@ -36,6 +44,7 @@ class UserController extends Controller
 
         // cari eventnya
         $event = Event::findorfail($ticket->event_id);
+        
         // dd($event);
         return view('page.user.payment', compact('quantity', 'ticket', 'event'));
     }

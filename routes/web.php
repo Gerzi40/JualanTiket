@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
         ->group(function () {
             Route::get('user/home', 'index')->name('home');
             Route::get('user/eventdetail/{id}', 'getEventDetail')->name('eventDetail');
+            Route::get('user/eventlist', 'getEventList')->name('eventList');
             Route::post('user/payment', 'testOnly')->name('paymentTest');
         });
 });
@@ -50,6 +51,6 @@ Route::middleware(['auth:admin'])->group(function () {
 
 // guest
 Route::get('/', [EventController::class, 'index'])->name('home');
-Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventlist');
+Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventList');
 Route::get('/eventdetail/{id}', [EventController::class, 'getEventDetail'])->name('eventDetail');
 
