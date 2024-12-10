@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             EventSeeder::class,
             TransactionSeeder::class,
-            TicketcategorySeeder::class
+            TicketCategorySeeder::class
         ]);
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 
-class TicketcategorySeeder extends Seeder
+class TicketCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,7 +16,7 @@ class TicketcategorySeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
         TicketCategory::create([
-            'name' => 'normal',
+            'name' => 'Normal',
             'price' => 50,
             'event_id' => 1,
             'deadline' => $faker->dateTime(), 

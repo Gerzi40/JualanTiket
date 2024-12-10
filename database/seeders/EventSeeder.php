@@ -16,12 +16,12 @@ class EventSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
 
-        for($i=0; $i<3; $i++) {
+        for($i=1; $i<=3; $i++) {
             Event::create([
                 'name' => $faker->words(2, true),
-                'image' => 'image',
-                'price' => '100000',
-                'location' => 'location',
+                'image' => '/event1.jpg',
+                'price' => $i,
+                'location' => $faker->state(),
                 'date' => $faker->date(),
                 'time' => 'time',
                 'description' => $faker->paragraphs(2, true),
