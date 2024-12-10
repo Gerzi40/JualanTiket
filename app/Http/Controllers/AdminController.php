@@ -10,4 +10,14 @@ class AdminController extends Controller
     {
         return view('page.admin.home');
     }
+
+    public function category()
+    {
+        return view('page.admin.category');
+    }
+
+    public function transaction()
+    {
+        return view('page.admin.transaction');
+    }
 }

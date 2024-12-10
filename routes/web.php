@@ -46,6 +46,8 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('admin.')
         ->group(function () {
             Route::get('admin/home', 'index')->name('home');
+            Route::get('admin/category', 'category')->name('category');
+            Route::get('admin/transaction', 'transaction')->name('transaction');
         });
 });
 
