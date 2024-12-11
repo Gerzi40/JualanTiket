@@ -3,7 +3,9 @@
 @section('content')
 
     <h1>List Event</h1>
+
     <a href="{{ route('admin.add') }}" class="light-button">Add Event</a>
+    
     <table class="table">
         <thead>
             <tr>

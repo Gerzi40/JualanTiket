@@ -17,6 +17,10 @@
             height: 100%;
         }
 
+        .gap {
+            height: 1rem;
+        }
+
         .dark-background {
             background-color: #2D3142;
         }
@@ -41,6 +45,7 @@
             display: inline-block;
             padding: 0.375rem 0.75rem;
             background-color: #EF8354;
+            border: none;
             border-radius: 0.375rem;
             color: #2D3142;
             text-decoration: none;
@@ -56,6 +61,8 @@
         }
 
     </style>
+
+    @yield('style')
 
 </head>
 <body>
