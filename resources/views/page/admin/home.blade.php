@@ -4,8 +4,12 @@
 
     <h1>List Event</h1>
 
+    <div class="gap"></div>
+
     <a href="{{ route('admin.add') }}" class="light-button">Add Event</a>
-    
+
+    <div class="gap"></div>
+
     <table class="table">
         <thead>
             <tr>
@@ -16,7 +20,7 @@
         </thead>
         <tbody>
             @foreach ($events as $event)    
-                <tr style="background-color: black">
+                <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $event->name }}</td>
                     <td>

@@ -1,4 +1,4 @@
-<div class="dark-background light-color" style="width: 15%;">
+<div class="dark-background light-color" style="width: 17.5%;">
     <div class="fs-2 fw-bold py-4 text-center">
         Tiketin
     </div>

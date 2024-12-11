@@ -69,7 +69,7 @@
     
     <div class="position-fixed top-0 bottom-0 start-0 end-0 d-flex">
         @include('layout.admin.header')
-        <div class="p-5" style="overflow-y: auto; width: 85%">
+        <div class="p-5" style="overflow-y: auto; width: 82.5%">
             @yield('content')
         </div>
     </div>
