@@ -13,6 +13,23 @@ class AdminController extends Controller
         return view('page.admin.home', compact('events'));
     }
 
+    public function add()
+    {
+        return view('page.admin.add');
+    }
+
+    public function detail($id)
+    {
+        $event = Event::find($id);
+        return view('page.admin.detail', compact('event'));
+    }
+
+    public function edit($id)
+    {
+        $event = Event::find($id);
+        return view('page.admin.edit', compact('event'));
+    }
+
     public function category()
     {
         return view('page.admin.category');

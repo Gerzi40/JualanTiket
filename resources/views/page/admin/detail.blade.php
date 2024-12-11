@@ -21,10 +21,6 @@
             right: 0;
         }
 
-        .value {
-            flex-grow: 1;
-        }
-
     </style>
 
 @endsection
@@ -43,45 +39,27 @@
 
     <div class="detail-row">
         <div class="label">Price</div>
-        <div >
-            <input value="{{ $event->price }}" />
-        </div>
+        <div>Rp. {{ $event->price }}</div>
     </div>
     <div class="detail-row">
         <div class="label">Location</div>
-        <div >
-            <input value="{{ $event->location }}" />
-        </div>
+        <div>{{ $event->location }}</div>
     </div>
     <div class="detail-row">
         <div class="label">Date</div>
-        <div >
-            <input value="{{ $event->date }}" />
-        </div>
+        <div>{{ $event->date->format('j F Y') }}</div>
     </div>
     <div class="detail-row">
         <div class="label">Time</div>
-        <div >
-            <input value="{{ $event->time }}" />
-        </div>
+        <div>{{ $event->time }}</div>
     </div>
     <div class="detail-row">
         <div class="label">Description</div>
-        <div class="value">
-            <textarea rows="5" class="w-100">{{ $event->description }}</textarea>
-        </div>
+        <div>{{ $event->description }}</div>
     </div>
     <div class="detail-row">
         <div class="label">Terms</div>
-        <div class="value">
-            <textarea rows="5" class="w-100">{{ $event->terms }}</textarea>
-        </div>
-    </div>
-    <div class="detail-row">
-        <div style="width: 25%;"></div>
-        <div class="value">
-            <button class="light-button">Submit</button>
-        </div>
+        <div>{{ $event->terms }}</div>
     </div>
 
 @endsection
