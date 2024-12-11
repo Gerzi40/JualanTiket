@@ -59,7 +59,7 @@
     </div>
     <div class="detail-row">
         <div class="label">Terms</div>
-        <div>{{ $event->terms }}</div>
+        <div style="white-space: pre;">{{ $event->terms }}</div>
     </div>
 
 @endsection
