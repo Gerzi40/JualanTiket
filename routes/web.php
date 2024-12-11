@@ -59,3 +59,8 @@ Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventList');
 Route::get('/eventdetail/{id}', [EventController::class, 'getEventDetail'])->name('eventDetail');
 
+
+// API
+Route::post('/api/event', [EventController::class, 'create'])->name('api.event.create');
+Route::put('/api/event', [EventController::class, 'update'])->name('api.event.update');
+Route::delete('/api/event/{id}', [EventController::class, 'delete'])->name('api.event.delete');

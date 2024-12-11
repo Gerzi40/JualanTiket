@@ -26,7 +26,15 @@
                     <td>
                         <a href="{{ route('admin.detail', ['id' => $event->id]) }}" class="btn btn-primary">View</a>
                         <a href="{{ route('admin.edit', ['id' => $event->id]) }}" class="btn btn-warning">Edit</a>
-                        <button class="btn btn-danger">Delete</button>
+                        <form
+                            action="{{ route('api.event.delete', ['id' => $event->id]) }}"
+                            method="POST"
+                            style="display: inline-block"
+                        >
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

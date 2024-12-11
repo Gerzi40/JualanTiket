@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -15,13 +16,15 @@ class AdminController extends Controller
 
     public function add()
     {
-        return view('page.admin.add');
+        $userId = Auth::user()->id;
+        return view('page.admin.add', compact('userId'));
     }
 
     public function detail($id)
     {
+        $userId = Auth::user()->id;
         $event = Event::find($id);
-        return view('page.admin.detail', compact('event'));
+        return view('page.admin.detail', compact('userId', 'event'));
     }
 
     public function edit($id)

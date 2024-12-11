@@ -15,7 +15,8 @@ class Event extends Model
         'date',
         'time',
         'description',
-        'terms'
+        'terms',
+        'admin_id'
     ];
     protected $casts = [
         'date' => 'datetime'

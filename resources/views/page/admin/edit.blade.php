@@ -41,47 +41,68 @@
 
     <div class="gap"></div>
 
-    <div class="detail-row">
-        <div class="label">Price</div>
-        <div >
-            <input value="{{ $event->price }}" />
+    <form action="{{ route('api.event.update', $event) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="hidden" name="id" value="{{ $event->id }}" />
+        <div class="detail-row">
+            <div class="label">Image</div>
+            <div >
+                <input name="image" value="{{ $event->image }}" />
+            </div>
         </div>
-    </div>
-    <div class="detail-row">
-        <div class="label">Location</div>
-        <div >
-            <input value="{{ $event->location }}" />
+        <div class="detail-row">
+            <div class="label">Price</div>
+            <div >
+                <input name="price" value="{{ $event->price }}" />
+            </div>
         </div>
-    </div>
-    <div class="detail-row">
-        <div class="label">Date</div>
-        <div >
-            <input value="{{ $event->date }}" />
+        <div class="detail-row">
+            <div class="label">Location</div>
+            <div >
+                <input name="location" value="{{ $event->location }}" />
+            </div>
         </div>
-    </div>
-    <div class="detail-row">
-        <div class="label">Time</div>
-        <div >
-            <input value="{{ $event->time }}" />
+        <div class="detail-row">
+            <div class="label">Date</div>
+            <div >
+                <input type="date" name="date" value="{{ $event->date->format('Y-m-d') }}" min="{{ date('Y-m-d') }}" />
+            </div>
         </div>
-    </div>
-    <div class="detail-row">
-        <div class="label">Description</div>
-        <div class="value">
-            <textarea rows="5" class="w-100">{{ $event->description }}</textarea>
+        <div class="detail-row">
+            <div class="label">Time</div>
+            <div >
+                <input name="time" value="{{ $event->time }}" />
+            </div>
         </div>
-    </div>
-    <div class="detail-row">
-        <div class="label">Terms</div>
-        <div class="value">
-            <textarea rows="5" class="w-100">{{ $event->terms }}</textarea>
+        <div class="detail-row">
+            <div class="label">Description</div>
+            <div class="value">
+                <textarea rows="5" class="w-100" name="description">{{ $event->description }}</textarea>
+            </div>
         </div>
-    </div>
-    <div class="detail-row">
-        <div style="width: 25%;"></div>
-        <div class="value">
-            <button class="light-button">Submit</button>
+        <div class="detail-row">
+            <div class="label">Terms</div>
+            <div class="value">
+                <textarea rows="5" class="w-100" name="terms">{{ $event->terms }}</textarea>
+            </div>
         </div>
-    </div>
+        <div class="detail-row">
+            <div style="width: 25%;"></div>
+            <div class="value">
+                <button class="light-button">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 @endsection
