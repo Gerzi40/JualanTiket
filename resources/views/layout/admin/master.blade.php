@@ -37,6 +37,24 @@
             color: #EF8354;
         }
 
+        .light-button {
+            display: inline-block;
+            padding: 0.375rem 0.75rem;
+            background-color: #EF8354;
+            border-radius: 0.375rem;
+            color: #2D3142;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .light-button:hover {
+            background-color: #D96F40;
+        }
+
+        .light-button:active {
+            background-color: #C95E36;
+        }
+
     </style>
 
 </head>
@@ -44,7 +62,9 @@
     
     <div class="position-fixed top-0 bottom-0 start-0 end-0 d-flex">
         @include('layout.admin.header')
-        @yield('content')
+        <div class="p-5" style="overflow-y: auto; width: 85%">
+            @yield('content')
+        </div>
     </div>
 
 </body>

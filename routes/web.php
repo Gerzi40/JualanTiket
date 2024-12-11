@@ -46,6 +46,9 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('admin.')
         ->group(function () {
             Route::get('admin/home', 'index')->name('home');
+            Route::get('admin/event/add', 'add')->name('add');
+            Route::get('admin/event/{id}', 'detail')->name('detail');
+            Route::get('admin/event/{id}/edit', 'edit')->name('edit');
             Route::get('admin/category', 'category')->name('category');
             Route::get('admin/transaction', 'transaction')->name('transaction');
         });

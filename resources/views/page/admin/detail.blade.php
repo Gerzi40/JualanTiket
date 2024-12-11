@@ -5,6 +5,7 @@
     <a href="{{ route('admin.home') }}" class="light-button">
         Back
     </a>
-    <h1>Add</h1>
+    <h1>Detail</h1>
+    <p>{{ $event->id }}</p>
 
 @endsection
