@@ -64,6 +64,8 @@
 
     @yield('style')
 
+    </style>
+
 </head>
 <body>
     
