@@ -61,5 +61,9 @@
         <div class="label">Terms</div>
         <div style="white-space: pre;">{{ $event->terms }}</div>
     </div>
+    <div class="detail-row">
+        <div class="label">Poster</div>
+        <img src={{ asset($event->image) }}>
+    </div>
 
 @endsection
