@@ -1,46 +1,44 @@
-@extends('layout.master')
+@extends('layout.admin.master')
 
 @section('content')
-    {{-- <p>Home</p> --}}
 
-    <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex;">
-        <div class="bg-dark" style="width: 15%;">
-            <div class="text-light py-5 text-center">
-                Tiketin
-            </div>
-            <div class="bg-dark-subtle text-ligth py-2 px-3">List Event</div>
-        </div>
-        <div class="p-5" style="overflow-y: auto; width: 85%">
-            <h1>List Event</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">No</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>
-                            <button class="btn btn-primary">View</button>
-                            <button class="btn btn-warning">Edit</button>
+    <h1>List Event</h1>
+
+    <div class="gap"></div>
+
+    <a href="{{ route('admin.add') }}" class="light-button">Add Event</a>
+
+    <div class="gap"></div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($events as $event)    
+                <tr>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $event->name }}</td>
+                    <td>
+                        <a href="{{ route('admin.detail', ['id' => $event->id]) }}" class="btn btn-primary">View</a>
+                        <a href="{{ route('admin.edit', ['id' => $event->id]) }}" class="btn btn-warning">Edit</a>
+                        <form
+                            action="{{ route('api.event.delete', ['id' => $event->id]) }}"
+                            method="POST"
+                            style="display: inline-block"
+                        >
+                            @csrf
+                            @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>
-                            <button class="btn btn-primary">View</button>
-                            <button class="btn btn-warning">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 @endsection

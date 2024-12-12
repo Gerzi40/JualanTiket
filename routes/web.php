@@ -46,6 +46,11 @@ Route::middleware(['auth:admin'])->group(function () {
         ->name('admin.')
         ->group(function () {
             Route::get('admin/home', 'index')->name('home');
+            Route::get('admin/event/add', 'add')->name('add');
+            Route::get('admin/event/{id}', 'detail')->name('detail');
+            Route::get('admin/event/{id}/edit', 'edit')->name('edit');
+            Route::get('admin/category', 'category')->name('category');
+            Route::get('admin/transaction', 'transaction')->name('transaction');
         });
 });
 
@@ -54,3 +59,8 @@ Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventList');
 Route::get('/eventdetail/{id}', [EventController::class, 'getEventDetail'])->name('eventDetail');
 
+
+// API
+Route::post('/api/event', [EventController::class, 'create'])->name('api.event.create');
+Route::put('/api/event', [EventController::class, 'update'])->name('api.event.update');
+Route::delete('/api/event/{id}', [EventController::class, 'delete'])->name('api.event.delete');
