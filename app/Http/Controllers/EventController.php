@@ -16,7 +16,7 @@ class EventController extends Controller
         // dd($events);
         return view('page.guest.home', compact('events'));
     }
-    
+
     public function getEventDetail($id)
     {
         $event = Event::findorfail($id);
@@ -27,10 +27,10 @@ class EventController extends Controller
     {
         $sort = $req->query('sort');
 
-        if($sort && $sort != "") {
-            $events = Event::orderBy($sort, 'asc')->paginate(3);
+        if ($sort && $sort != "") {
+            $events = Event::orderBy($sort, 'asc')->paginate(2);
         } else {
-            $events = Event::paginate(3);
+            $events = Event::paginate(2);
         }
 
         return view('page.guest.event', compact('events'));
@@ -83,9 +83,7 @@ class EventController extends Controller
         try {
             $res = Event::where('id', $id)->delete();
             return back();
-        } catch(Exception $e) {
-            
+        } catch (Exception $e) {
         }
     }
-
 }

@@ -8,7 +8,7 @@
     <form action="{{ route('auth.attemptRegister') }}" method="POST">
         @csrf
         <div class="main-wrapper">
-            <div class="login-container">
+            <div class="login-container" style="background-color: #2D3142; color:#EF8354;">
                 <h2>Register</h2>
                 <div class="form-group">
                     <label for="username">Nama Lengkap</label>
@@ -34,7 +34,7 @@
                     <label for="gender">Jenis Kelamin</label>
                     <input type="text" id="gender" name="gender" required>
                 </div>
-                <button type="submit" class="btn" id="register">Register</button>
+                <button type="submit" class="btn-submit bg-o text-d" id="register">Register</button>
                 <div class="register-link">
                     <p>Already have an account? <a href={{ route('login') }}>Login here</a></p>
                 </div>
