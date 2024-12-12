@@ -22,8 +22,8 @@ class EventSeeder extends Seeder
                 'image' => '/event1.jpg',
                 'price' => $i,
                 'location' => $faker->state(),
-                'date' => $faker->date(),
-                'time' => 'time',
+                'date' => $faker->dateTime(),
+                'time' => '20.00 - 22.00',
                 'description' => $faker->paragraphs(2, true),
                 'terms' => 'terms',
                 'admin_id' => 1

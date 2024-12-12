@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('image');
             $table->text('price');
             $table->text('location');
-            $table->date('date');
+            $table->dateTime('date');
             $table->text('time');
             $table->text('description');
             $table->text('terms');

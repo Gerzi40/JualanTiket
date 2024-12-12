@@ -11,7 +11,7 @@
               <div class="fs-6 mt-4">
                 <div class="d-flex flex-wrap gap-4 align-items-center mt-2">
                     <img src="/assets/icon/calender.png" alt="">
-                    <p class="card-text">{{$event->date}}</p>
+                    <p class="card-text">{{$event->date->format('d M Y')}}</p>
                   </div>
                   <div class="d-flex flex-wrap gap-4 align-items-center mt-2">
                     <img src="/assets/icon/location.png" alt="">
