@@ -77,4 +77,5 @@
     </div>
 
 </body>
+    @yield('extra-js')
 </html>

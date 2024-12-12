@@ -38,19 +38,29 @@ class EventController extends Controller
 
     public function create(Request $req)
     {
-        $req->validate([
+        $data = $req->validate([
             'name' => 'required',
-            'image' => 'required',
             'price' => 'required|numeric',
             'location' => 'required',
             'date' => 'required|date',
             'time' => 'required|date_format:H:i',
             'description' => 'required',
             'terms' => 'required',
-            'admin_id' => 'required'
+            'admin_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
-        Event::create($req->all());
+        if ($req->hasFile('image') && $req->file('image')->isValid()) {
+            $posterFile = $req->file('image');
+            $posterPath = 'assets/events';
+            $posterName = $posterFile->getClientOriginalName();
+
+            $posterFile->move(public_path($posterPath), $posterName);
+
+            $data['image'] = "$posterPath/$posterName";
+        }
+
+        Event::create($data);
         return redirect()->route('admin.home');
     }
 
