@@ -19,7 +19,7 @@ class EventSeeder extends Seeder
         for($i=1; $i<=3; $i++) {
             Event::create([
                 'name' => $faker->words(2, true),
-                'image' => '/event1.jpg',
+                'image' => 'assets/events/event1.jpg',
                 'price' => $i,
                 'location' => $faker->state(),
                 'date' => $faker->dateTime(),
