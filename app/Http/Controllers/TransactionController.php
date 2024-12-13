@@ -48,7 +48,8 @@ class TransactionController extends Controller
     }
     public function getTransactions(){
 
-        $transactions = Transaction::all();
+        $user = Auth::user();
+        $transactions = Transaction::where('user_id', $user->id)->get();
 
         return view('page.user.transaction', compact('transactions'));
     }
