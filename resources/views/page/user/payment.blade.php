@@ -70,15 +70,15 @@
                         {{-- Ticket Price --}}
                         <div class="d-flex justify-content-between">
                             <p>Harga Tiket</p>
-                            <p>Rp{{$ticketPrice}}</p>
+                            <p>Rp. {{ number_format($ticketPrice, 2, ',', '.') }}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p>Harga Tiket</p>
-                            <p>Rp{{$adminFee}}</p>
+                            <p>Rp. {{ number_format($adminFee, 2, ',', '.') }}</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <p>Total</p>
-                            <p>Rp{{$totalPrice}}</p>
+                            <p>Rp. {{ number_format($totalPrice, 2, ',', '.') }}</p>
                         </div>
                     </div>
                     <input type="hidden" name="event_id" value="{{$event->id}}">

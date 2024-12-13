@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\TransactionController;
 
 // Route::get('/', function () {
 //     if (Auth::check()) {
@@ -39,9 +40,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('user/eventlist', 'getEventList')->name('eventList');
             Route::get('user/payment', 'payment')->name('payment');
             Route::post('user/paymentDetail', 'testOnly')->name('paymentDetail');
+        });
+    Route::controller(TransactionController::class)
+        ->name('user.')
+        ->group(function(){
             Route::post('user/makeTransaction', 'makeTransaction')->name('makeTransaction');
             Route::get('user/TransactionHistory', 'getTransactions')->name('getTransaction');
-        });
+    });
 });
 
 Route::middleware(['auth:admin'])->group(function () {

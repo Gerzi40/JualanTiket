@@ -11,12 +11,18 @@
                     <a class="nav-link active text-o" aria-current="page"
                         href="{{ route('user.eventList') }}">Events</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-o" aria-current="page"
+                        href="{{ route('user.getTransaction') }}">Transactions</a>
+                </li>
             </ul>
-            <form class="d-flex me-auto" role="search">
+            
+            <form class="d-flex me-auto" role="search" action="" method="">
+                @csrf
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn" type="submit" style="background-color: #EF8354; color: #2D3142">Search</button>
             </form>
-
+            
             <a href="{{ route('auth.logout') }}" class="btn fs-5"
                 style="background-color: #EF8354; color: #2D3142">Logout</a>
         </div>
