@@ -22,4 +22,7 @@ class TicketCategory extends Model
     public function event(){
         return $this->belongsTo(Event::class);
     }
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
 }

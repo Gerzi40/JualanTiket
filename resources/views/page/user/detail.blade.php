@@ -27,7 +27,7 @@
         </div>
         {{-- Ticket Selection --}}
         <div class="mt-5">
-            <form action="{{ route('user.paymentTest') }}" method="POST">
+            <form action="{{ route('user.paymentDetail') }}" method="POST">
                 @csrf
                 <input type="hidden" name="ticket_id" id="selected-ticket" value="">
                 <input type="hidden" name="quantity" id="selected-quantity" value="1">
@@ -44,10 +44,12 @@
                                         {{ $ticket->deadline->format('H:i') }} WIB</p>
                                     <div>
                                         <label for="quantity-{{ $ticket->id }}">Jumlah Tiket:</label>
-                                        <input type="number" id="quantity-{{ $ticket->id }}" value="0"
-                                            min="0" class="form-control ticket-quantity">
+                                        <input type="number" id="quantity-{{ $ticket->id }}" value="0" min="0"
+                                            class="form-control ticket-quantity">
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
                 <div class="mt-5 text-center">

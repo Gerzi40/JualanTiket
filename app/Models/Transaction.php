@@ -9,7 +9,9 @@ class Transaction extends Model
     protected $fillable = [
         'user_id',
         'event_id',
+        'ticketcategory_id',
         'total_ticket',
+        'total_price',
         'transaction_dateTime'
     ];
     protected $casts = [
@@ -20,5 +22,8 @@ class Transaction extends Model
     }
     public function event(){
         return $this->belongsTo(Event::class);
+    }
+    public function ticketcategory(){
+        return $this->belongsTo(TicketCategory::class);
     }
 }

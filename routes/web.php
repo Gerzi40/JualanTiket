@@ -37,7 +37,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('user/home', 'index')->name('home');
             Route::get('user/eventdetail/{id}', 'getEventDetail')->name('eventDetail');
             Route::get('user/eventlist', 'getEventList')->name('eventList');
-            Route::post('user/payment', 'testOnly')->name('paymentTest');
+            Route::get('user/payment', 'payment')->name('payment');
+            Route::post('user/paymentDetail', 'testOnly')->name('paymentDetail');
+            Route::post('user/makeTransaction', 'makeTransaction')->name('makeTransaction');
+            Route::get('user/TransactionHistory', 'getTransactions')->name('getTransaction');
         });
 });
 
