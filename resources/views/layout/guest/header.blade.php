@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-d mb-5">
+<nav class="navbar navbar-expand-lg bg-d mb-5 position-sticky top-0 z-1">
     <div class="container-fluid">
         <a class="navbar-brand text-o" href="{{ route('home') }}">Tiketin</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
