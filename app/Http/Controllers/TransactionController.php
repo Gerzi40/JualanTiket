@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class TransactionController extends Controller
 {
     //
-    public function makeTransaction(Request $request){
-        
+    public function makeTransaction(Request $request)
+    {
+
         // $validated = $request->validate([
         //     'payment_method' => 'required|string',
         //     'event_id' => 'required|integer',
@@ -19,7 +20,7 @@ class TransactionController extends Controller
         //     'quantity' => 'required|integer',
         //     'total_price' => 'required|numeric',
         // ]);
-        
+
         $user = Auth::user();
         $event_id = (int)$request->event_id;
         $ticketcategory_id = (int)$request->ticket_id;
@@ -43,14 +44,22 @@ class TransactionController extends Controller
 
         $ticket->stock = $newStock;
         $ticket->save();
-        
+
         return redirect()->route('user.getTransaction');
     }
-    public function getTransactions(){
+    public function getTransactions()
+    {
 
         $user = Auth::user();
         $transactions = Transaction::where('user_id', $user->id)->get();
 
         return view('page.user.transaction', compact('transactions'));
+    }
+
+    public function getAllTransactions()
+    {
+        $transactions = Transaction::with(['event', 'ticketcategory'])->get();
+
+        return view('page.admin.transaction', compact('transactions'));
     }
 }

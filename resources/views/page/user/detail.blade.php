@@ -1,8 +1,9 @@
 @extends('layout.user.master')
 
 @section('content')
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 ">
         {{-- Image + detail --}}
+
         <div class="d-flex flex-wrap justify-content-center gap-5">
             <img src="/assets/events/event_test_image.png" alt="" class="" style="width: 25rem;">
             <div class="card" style="width: 30rem; height: 15rem;">
@@ -44,18 +45,30 @@
                                         {{ $ticket->deadline->format('H:i') }} WIB</p>
                                     <div>
                                         <label for="quantity-{{ $ticket->id }}">Jumlah Tiket:</label>
-                                        <input type="number" id="quantity-{{ $ticket->id }}" value="0" min="0"
-                                            class="form-control ticket-quantity">
+                                        <input type="number" id="quantity-{{ $ticket->id }}" value="0"
+                                            min="0" class="form-control ticket-quantity">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
+
                 <div class="mt-5 text-center">
                     <button type="submit" class="btn bg-o text-d" id="buy-button" disabled>Beli Tiket</button>
                 </div>
+
             </form>
+
+        </div>
+        <div class="px-5">
+            <h3>Deskripsi</h3>
+            <p>{{ $event->description }}</p>
+        </div>
+
+        <div class="px-5">
+            <h3>Syarat dan Ketentuan</h3>
+            <p>{{ $event->terms }}</p>
         </div>
     </div>
 @endsection

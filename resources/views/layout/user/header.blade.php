@@ -9,20 +9,21 @@
             <ul class="navbar-nav me-5 mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active text-o" aria-current="page"
-                        href="{{ route('user.eventList') }}">Events</a>
+                        href="{{ route('user.userEventList') }}">Events</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-o" aria-current="page"
                         href="{{ route('user.getTransaction') }}">Transactions</a>
                 </li>
             </ul>
-            
-            <form class="d-flex me-auto" role="search" action="" method="">
+
+            <form class="d-flex me-auto" role="search" method="POST" action="{{ route('user.userSearchEvent') }}">
                 @csrf
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn" type="submit" style="background-color: #EF8354; color: #2D3142">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    name="inputSearch">
+                <button class="btn bg-o text-d" type="submit">Search</button>
             </form>
-            
+
             <a href="{{ route('auth.logout') }}" class="btn fs-5"
                 style="background-color: #EF8354; color: #2D3142">Logout</a>
         </div>

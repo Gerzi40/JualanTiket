@@ -19,7 +19,7 @@
                         <p class="card-text">{{ $event->date->format('d M Y') }}</p>
                         <p class="card-text">{{ $event->location }}</p>
                         <p class="card-text">Rp.{{ number_format($event->price, 2, ',', '.') }}</p>
-                        <a href="{{ route('user.eventDetail', ['id' => $event->id]) }}" class="btn"
+                        <a href="{{ route('user.userEventDetail', ['id' => $event->id]) }}" class="btn"
                             style="background-color: #EF8354; color: #2D3142">Detail</a>
                     </div>
                 </div>

@@ -56,6 +56,15 @@
                 </a>
             </div>
         </div>
+        <div class="px-5">
+            <h3>Deskripsi</h3>
+            <p>{{ $event->description }}</p>
+        </div>
+
+        <div class="px-5">
+            <h3>Syarat dan Ketentuan</h3>
+            <p>{{ $event->terms }}</p>
+        </div>
     </div>
 @endsection
 

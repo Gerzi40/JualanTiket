@@ -23,6 +23,14 @@ class EventController extends Controller
         $tickets = TicketCategory::with('event')->where('event_id', $id)->get();
         return view('page.guest.detail', compact('event', 'tickets'));
     }
+
+    public function searchEvent(Request $req)
+    {
+        $events = Event::where('name', 'LIKE', '%' . $req->inputSearch . '%')->paginate(2);
+
+        return view('page.guest.event', compact('events'));
+    }
+
     public function getEventList(Request $req)
     {
         $sort = $req->query('sort');

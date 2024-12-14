@@ -1,10 +1,18 @@
 @extends('layout.guest.master')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
+        <div class="p-4 mb-4 bg-d">
+            <form class="d-flex me-auto" role="search" method="POST" action="{{ route('searchEvent') }}">
+                @csrf
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="inputSearch">
+                <button class="btn bg-o text-d" type="submit">Search</button>
+            </form>
+        </div>
         {{-- Sorting? --}}
         <div class="d-flex justify-content-end">
             <form class="d-flex gap-2">
+                @csrf
                 <p class="m-0">Urutkan: </p>
                 <select name="sort" onchange="this.form.submit()">
                     <option value="">-- Sort --</option>

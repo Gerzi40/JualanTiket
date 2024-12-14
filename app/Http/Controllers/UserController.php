@@ -17,9 +17,22 @@ class UserController extends Controller
         return view('page.user.home', compact('events'));
     }
 
-    public function getEventList()
+    public function getEventList(Request $req)
     {
-        $events = Event::paginate(3);
+        $sort = $req->query('sort');
+
+        if ($sort && $sort != "") {
+            $events = Event::orderBy($sort, 'asc')->paginate(2);
+        } else {
+            $events = Event::paginate(2);
+        }
+        return view('page.user.event', compact('events'));
+    }
+
+    public function searchEvent(Request $req)
+    {
+        $events = Event::where('name', 'LIKE', '%' . $req->inputSearch . '%')->paginate(2);
+
         return view('page.user.event', compact('events'));
     }
 
@@ -30,17 +43,18 @@ class UserController extends Controller
         return view('page.user.detail', compact('event', 'tickets'));
     }
 
-    public function testOnly(Request $request){
+    public function testOnly(Request $request)
+    {
         $validated = $request->validate([
             'ticket_id' => 'required|exists:ticketcategories,id', // Validasi bahwa tiket valid
             'quantity' => 'required|integer|min:1',    // Jumlah harus minimal 1
         ]);
-    
+
         $ticketId = $validated['ticket_id'];
 
         // ini quantitynya
         $quantity = $validated['quantity'];
-    
+
         // ini ticket yang dipilih
         $ticket = TicketCategory::findorfail($ticketId);
 
@@ -48,15 +62,15 @@ class UserController extends Controller
         $event = Event::findorfail($ticket->event_id);
 
         $ticketPrice = $quantity * $ticket->price;
-        
+
         $adminFee = $quantity * 35;
 
         $totalPrice = $ticketPrice + $adminFee;
-        
+
         // dd($event);
-        // return view('page.user.payment', compact('quantity', 'ticket', 'event', 
+        // return view('page.user.payment', compact('quantity', 'ticket', 'event',
         // 'ticketPrice', 'adminFee', 'totalPrice'));
-        return redirect()->route('user.payment',[
+        return redirect()->route('user.payment', [
             'quantity' => $quantity,
             'ticket' => $ticket,
             'event' => $event,
@@ -66,7 +80,8 @@ class UserController extends Controller
         ]);
     }
 
-    public function payment(Request $request){
+    public function payment(Request $request)
+    {
         // dd($request);
         $quantity = $request->query('quantity');
         // dd($quantity);
@@ -79,7 +94,13 @@ class UserController extends Controller
 
         $event = Event::findorfail($event_id);
         $ticket = TicketCategory::findorfail($ticket_id);
-        return view('page.user.payment', compact('quantity', 'ticket', 'event', 
-        'ticketPrice', 'adminFee', 'totalPrice'));
+        return view('page.user.payment', compact(
+            'quantity',
+            'ticket',
+            'event',
+            'ticketPrice',
+            'adminFee',
+            'totalPrice'
+        ));
     }
 }
