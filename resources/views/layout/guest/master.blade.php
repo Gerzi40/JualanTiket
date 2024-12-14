@@ -36,11 +36,15 @@
 
 <body>
 
-    @include('layout.guest.header')
+    <div class="position-fixed top-0 bottom-0 start-0 end-0 overflow-auto d-flex flex-column">
+        @include('layout.guest.header')
 
-    @yield('content')
-
-    @include('layout.guest.footer')
+        <div class="flex-grow-1">
+            @yield('content')
+        </div>
+    
+        @include('layout.guest.footer')
+    </div>
 
 </body>
 

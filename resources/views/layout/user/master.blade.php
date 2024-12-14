@@ -16,11 +16,15 @@
 
 <body>
 
-    @include('layout.user.header')
-
-    @yield('content')
-
-    @include('layout.user.footer')
+    <div class="position-fixed top-0 bottom-0 start-0 end-0 overflow-auto d-flex flex-column">
+        @include('layout.user.header')
+    
+        <div class="flex-grow-1">
+            @yield('content')
+        </div>
+    
+        @include('layout.user.footer')
+    </div>
 
 </body>
 
