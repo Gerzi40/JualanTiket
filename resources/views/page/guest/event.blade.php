@@ -5,20 +5,21 @@
         <div class="p-4 mb-4 bg-d">
             <form class="d-flex me-auto" role="search" method="POST" action="{{ route('searchEvent') }}">
                 @csrf
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="inputSearch">
-                <button class="btn bg-o text-d" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="@lang('message.search')" aria-label="Search"
+                    name="inputSearch">
+                <button class="btn bg-o text-d" type="submit">@lang('message.search')</button>
             </form>
         </div>
         {{-- Sorting? --}}
         <div class="d-flex justify-content-end">
             <form class="d-flex gap-2">
                 @csrf
-                <p class="m-0">Urutkan: </p>
+                <p class="m-0">@lang('message.sort') </p>
                 <select name="sort" onchange="this.form.submit()">
-                    <option value="">-- Sort --</option>
-                    <option value="name">Name</option>
-                    <option value="price">Price</option>
-                    <option value="date">Date</option>
+                    <option value="">-- @lang('message.sort') --</option>
+                    <option value="name">@lang('message.name')</option>
+                    <option value="price">@lang('message.price')</option>
+                    <option value="date">@lang('message.date')</option>
                 </select>
             </form>
         </div>
@@ -35,7 +36,7 @@
                             <hr>
                             <p class="card-text">Rp.{{ number_format($event->price, 2, ',', '.') }}</p>
                             <a href="{{ route('eventDetail', ['id' => $event->id]) }}" class="btn"
-                                style="background-color: #EF8354; color: #2D3142">Detail</a>
+                                style="background-color: #EF8354; color: #2D3142">@lang('message.detail')</a>
                         </div>
                     </div>
                 @endforeach

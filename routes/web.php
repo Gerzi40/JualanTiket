@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\TransactionController;
 
@@ -70,6 +71,8 @@ Route::get('/eventlist', [EventController::class, 'getEventList'])->name('eventL
 Route::post('/eventlist', [EventController::class, 'searchEvent'])->name('searchEvent');
 Route::get('/eventdetail/{id}', [EventController::class, 'getEventDetail'])->name('eventDetail');
 
+// Localization
+Route::get('locale/{lang}', [LocaleController::class, 'setLocale'])->name('setLocale');
 
 // API
 Route::post('/api/event', [EventController::class, 'create'])->name('api.event.create');

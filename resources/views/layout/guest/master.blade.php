@@ -42,7 +42,7 @@
         <div class="flex-grow-1">
             @yield('content')
         </div>
-    
+
         @include('layout.guest.footer')
     </div>
 

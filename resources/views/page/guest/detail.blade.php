@@ -38,10 +38,10 @@
                             <h5 class="card-title">{{ $ticket->name }}</h5>
                             <div class="fs-6 mt-4">
                                 <p class="card-text">Rp.{{ number_format($ticket->price, 2, ',', '.') }}</p>
-                                <p class="card-text">Berakhir {{ $ticket->deadline->format('d M Y') }} |
+                                <p class="card-text">@lang('message.end') {{ $ticket->deadline->format('d M Y') }} |
                                     {{ $ticket->deadline->format('H:i') }} WIB</p>
                                 <div>
-                                    <label for="quantity-{{ $ticket->id }}">Jumlah Tiket:</label>
+                                    <label for="quantity-{{ $ticket->id }}">@lang('message.ticketamount')</label>
                                     <input type="number" id="quantity-{{ $ticket->id }}" value="0" min="0"
                                         class="form-control ticket-quantity">
                                 </div>
@@ -52,17 +52,17 @@
             </div>
             <div class="mt-5 text-center">
                 <a href="{{ route('login') }}">
-                    <button type="submit" class="btn bg-o text-d" id="buy-button" disabled>Beli Tiket</button>
+                    <button type="submit" class="btn bg-o text-d" id="buy-button" disabled>@lang('message.buyticket')</button>
                 </a>
             </div>
         </div>
         <div class="px-5">
-            <h3>Deskripsi</h3>
+            <h3>@lang('message.description')</h3>
             <p>{{ $event->description }}</p>
         </div>
 
         <div class="px-5">
-            <h3>Syarat dan Ketentuan</h3>
+            <h3>@lang('message.terms')</h3>
             <p>{{ $event->terms }}</p>
         </div>
     </div>
@@ -106,5 +106,10 @@
     .ticket-option.selected {
         border-color: #007bff;
         box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
     }
 </style>

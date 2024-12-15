@@ -20,7 +20,7 @@
                         <p class="card-text">{{ $event->location }}</p>
                         <p class="card-text">Rp.{{ number_format($event->price, 2, ',', '.') }}</p>
                         <a href="{{ route('eventDetail', ['id' => $event->id]) }}" class="btn"
-                            style="background-color: #EF8354; color: #2D3142">Detail</a>
+                            style="background-color: #EF8354; color: #2D3142">@lang('message.detail')</a>
                     </div>
                 </div>
             @endforeach

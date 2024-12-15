@@ -17,13 +17,16 @@ class Transaction extends Model
     protected $casts = [
         'transaction_dateTime' => 'datetime',
     ];
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
-    public function event(){
+    public function event()
+    {
         return $this->belongsTo(Event::class);
     }
-    public function ticketcategory(){
+    public function ticketcategory()
+    {
         return $this->belongsTo(TicketCategory::class);
     }
 }
