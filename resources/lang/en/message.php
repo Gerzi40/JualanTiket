@@ -20,7 +20,7 @@ return [
     'totalprice' => 'Total Price',
     'purchasedate' => 'Purchase Date',
     'showqr' => 'ShowQR',
-    'detailorder' => 'Detail Order',
+    'detailorder' => 'Order Detail',
     'ticketinfo' => 'Ticket Info',
     'total' => 'Total',
     'pay' => 'Pay',

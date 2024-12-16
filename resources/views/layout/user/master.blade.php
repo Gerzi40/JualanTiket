@@ -26,6 +26,8 @@
         @include('layout.user.footer')
     </div>
 
+    @yield('scripts');
+
 </body>
 
 </html>

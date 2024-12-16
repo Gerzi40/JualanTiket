@@ -12,8 +12,7 @@
             </div>
         </div>
         {{-- Form --}}
-        <form action="{{ route('user.makeTransaction') }}" method="POST">
-            @csrf
+        <div>
             {{-- Payment + Detail --}}
             <div class="d-flex justify-content-between mt-5">
                 {{-- Payment Selection --}}
@@ -88,11 +87,52 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end mr-5 mt-3">
-                <button type="submit" class="btn bg-o text-d">@lang('message.pay')</button>
+                <button type="submit" id="pay-button" class="btn bg-o text-d">@lang('message.pay')</button>
             </div>
-        </form>
+        </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{env('MIDTRANS_CLIENT_KEY')}}"></script>
+    <script type="text/javascript">
+        document.getElementById('pay-button').onclick = function(){
+          // SnapToken acquired from previous step
+          var snapToken = '{{ $transaction->snap_token }}';
+          var changeStatusUrl = '{{ route("user.changeStatus", ["id" => $transaction->id]) }}';
+
+          snap.pay(snapToken, {
+            // Optional
+            onSuccess: function(result){
+                fetch(changeStatusUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token
+                    },
+                    body: JSON.stringify(result)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Status changed:', data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+              /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            },
+            // Optional
+            onPending: function(result){
+              /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            },
+            // Optional
+            onError: function(result){
+              /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+            }
+          });
+        };
+      </script>
+    @endsection
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

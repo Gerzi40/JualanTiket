@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
         ->group(function () {
             Route::post('user/makeTransaction', 'makeTransaction')->name('makeTransaction');
             Route::get('user/TransactionHistory', 'getTransactions')->name('getTransaction');
+            Route::post('user/changeStatus/{id}', 'changeStatus')->name('changeStatus');
         });
 });
 

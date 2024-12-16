@@ -19,7 +19,8 @@ return new class extends Migration
             $table->double('total_price');
             $table->dateTime('transaction_dateTime');
             $table->integer('total_ticket');
-            // $table->string('snap_token')->nullable();
+            $table->string('snap_token')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

@@ -82,6 +82,7 @@ class UserController extends Controller
 
     public function payment(Request $request)
     {
+
         // dd($request);
         $quantity = $request->query('quantity');
         // dd($quantity);
@@ -92,15 +93,19 @@ class UserController extends Controller
         $adminFee = $request->query('adminFee');
         $totalPrice = $request->query('totalPrice');
 
+        $transaction_id = $request->query('transaction_id');
+
         $event = Event::findorfail($event_id);
         $ticket = TicketCategory::findorfail($ticket_id);
+        $transaction = Transaction::findorfail($transaction_id);
         return view('page.user.payment', compact(
             'quantity',
             'ticket',
             'event',
             'ticketPrice',
             'adminFee',
-            'totalPrice'
+            'totalPrice',
+            'transaction'
         ));
     }
 }

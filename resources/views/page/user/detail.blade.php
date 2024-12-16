@@ -28,7 +28,7 @@
         </div>
         {{-- Ticket Selection --}}
         <div class="mt-5">
-            <form action="{{ route('user.paymentDetail') }}" method="POST">
+            <form action="{{ route('user.makeTransaction') }}" method="POST">
                 @csrf
                 <input type="hidden" name="ticket_id" id="selected-ticket" value="">
                 <input type="hidden" name="quantity" id="selected-quantity" value="1">
