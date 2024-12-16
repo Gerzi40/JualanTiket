@@ -27,7 +27,7 @@ class TransactionController extends Controller
         $quantity = (int)$request->quantity;
         $total_price = (int)$request->total_price;
         // dd($total_price, $quantity);
-        Transaction::create([
+        $transactions = Transaction::create([
             'user_id' => $user->id,
             'event_id' => $event_id,
             'ticketcategory_id' => $ticketcategory_id,
@@ -36,7 +36,6 @@ class TransactionController extends Controller
             'transaction_dateTime' => now(),
         ]);
 
-        // // Set your Merchant Server Key
         // \Midtrans\Config::$serverKey = config('midtrans.serverKey');
         // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         // \Midtrans\Config::$isProduction = false;
@@ -47,9 +46,15 @@ class TransactionController extends Controller
 
         // $params = array(
         //     'transaction_details' => array(
-        //         'order_id' => rand(),
-        //         'gross_amount' => $total_price,
-        //     )
+        //         'order_id' => $transactions->id,
+        //         'gross_amount' => $transactions->total_price,
+        //     ),
+        //     'customer_details' => array(
+        //         'first_name' => 'budi',
+        //         'last_name' => 'pratama',
+        //         'email' => 'budi.pra@example.com',
+        //         'phone' => '08111222333',
+        //     ),
         // );
 
         // $snapToken = \Midtrans\Snap::getSnapToken($params);
