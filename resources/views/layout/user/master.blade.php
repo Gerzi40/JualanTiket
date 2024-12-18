@@ -29,5 +29,6 @@
     
 </body>
 @yield('scripts');
+@yield('style');
 
 </html>

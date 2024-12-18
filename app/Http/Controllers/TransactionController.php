@@ -47,7 +47,7 @@ class TransactionController extends Controller
 
         $ticketPrice = $quantity * $ticket->price;
 
-        $adminFee = $quantity * 35;
+        $adminFee = $quantity * 10000;
 
         $totalPrice = $ticketPrice + $adminFee;
         $transactions = Transaction::create([
