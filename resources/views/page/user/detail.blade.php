@@ -46,7 +46,7 @@
                         <div class="card-body px-4">
                             <h5 class="card-title">{{ $ticket->name }}</h5>
                             <div class="fs-6 mt-4">
-                                <p class="card-text">Rp.{{ number_format($ticket->price, 2, ',', '.') }}</p>
+                                <p class="card-text">Rp. {{ number_format($ticket->price, 2, ',', '.') }}</p>
                                 <p class="card-text">@lang('message.end') {{ $ticket->deadline->format('d M Y') }} |
                                     {{ $ticket->deadline->format('H:i') }} WIB</p>
                                 <div>
