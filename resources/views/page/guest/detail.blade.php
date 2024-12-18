@@ -4,7 +4,7 @@
     <div class="container-fluid mt-5">
         {{-- Image + detail --}}
         <div class="d-flex flex-wrap justify-content-center gap-5">
-            <img src="/assets/events/event_test_image.png" alt="" class="" style="width: 25rem;">
+            <img src="{{ asset($event->image) }} " alt="" class="" style="width: 25rem;">
             <div class="card" style="width: 30rem; height: 15rem;">
                 <div class="card-body px-4">
                     <h5 class="card-title">{{ $event->name }}</h5>
