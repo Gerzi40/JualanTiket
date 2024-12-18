@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\TicketCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +32,22 @@ class AdminController extends Controller
     {
         $event = Event::find($id);
         return view('page.admin.edit', compact('event'));
+    }
+
+    public function manageTicket($id){
+        $tickets = TicketCategory::where('event_id', $id)->get();
+        $event = Event::findorfail($id);
+        return view('page.admin.ticketmanagement', compact('tickets', 'event'));
+    }
+
+    public function toEditTicket($id){
+        $ticket = TicketCategory::findorfail($id);
+        return view('page.admin.editticket', compact('ticket'));
+    }
+
+    public function toAddTicket($id){
+        $event = Event::findorfail($id);
+        return view('page.admin.addticket', compact('event'));
     }
 
     public function category()

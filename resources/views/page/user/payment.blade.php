@@ -7,27 +7,27 @@
             <div class="">
                 <h1>@lang('message.detailorder')</h1>
             </div>
-            <div class="d-flex align-items-center px-2" style="background-color: #EF8354; border-radius: 10px">
+            {{-- <div class="d-flex align-items-center px-2" style="background-color: #EF8354; border-radius: 10px">
                 <h3 class="fs-4">@lang('message.completepayment') 10:00</h3>
-            </div>
+            </div> --}}
         </div>
         {{-- Form --}}
         <div>
             {{-- Payment + Detail --}}
-            <div class="d-flex justify-content-between mt-5">
+            <div class="d-flex justify-content-center mt-5">
                 {{-- Payment Selection --}}
-                <div class="border py-3" style="background-color: #F5F5F5; border-radius: 10px; width: 35rem; box-shadow: ">
-                    {{-- Upper Div --}}
+                {{-- <div class="border py-3" style="background-color: #F5F5F5; border-radius: 10px; width: 35rem; box-shadow: ">
+                    Upper Div
                     <div class="">
                         <div class="d-flex justify-content-center">
                             <h3 class="fs-4">@lang('message.paymentmethod')</h3>
                         </div>
                         <hr style="color: black; opacity: 1; border-width: 2px">
                     </div>
-                    {{-- Payment Selection --}}
+                    Payment Selection
                     <div class="d-flex flex-wrap payment-options gap-4 justify-content-center">
                         <input type="hidden" name="payment-selected" id="payment-selected">
-                        {{-- Default ada 3 --}}
+                        Default ada 3
                         <div class="payment-button" data-value="gopay">
                             <img src="/assets/payment/gopay.png" alt="Gopay">
                         </div>
@@ -38,7 +38,7 @@
                             <img src="/assets/payment/gopay.png" alt="Shopee">
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- Payment Details --}}
                 <div class="border px-3 py-3" style="border-radius: 10px; width: 32rem">
                     <div class="">
@@ -99,26 +99,12 @@
         document.getElementById('pay-button').onclick = function(){
           // SnapToken acquired from previous step
           var snapToken = '{{ $transaction->snap_token }}';
-          var changeStatusUrl = '{{ route("user.changeStatus", ["id" => $transaction->id]) }}';
+        //   var changeStatusUrl = '{{ route("user.changeStatus", ["id" => $transaction->id]) }}';
 
           snap.pay(snapToken, {
             // Optional
             onSuccess: function(result){
-                fetch(changeStatusUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include CSRF token
-                    },
-                    body: JSON.stringify(result)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Status changed:', data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+                window.location.href = "{{ route("user.changeStatus", ["id" => $transaction->id]) }}";
               /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
             },
             // Optional

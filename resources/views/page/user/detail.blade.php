@@ -35,22 +35,28 @@
 
                 <div class="d-flex flex-wrap justify-content-center gap-5">
                     @foreach ($tickets as $ticket)
-                        <div class="card ticket-option" data-ticket-id="{{ $ticket->id }}"
-                            data-ticket-name="{{ $ticket->name }}" style="width: 30rem; height: 15rem; cursor: pointer;">
-                            <div class="card-body px-4">
-                                <h5 class="card-title">{{ $ticket->name }}</h5>
-                                <div class="fs-6 mt-4">
-                                    <p class="card-text">Rp.{{ number_format($ticket->price, 2, ',', '.') }}</p>
-                                    <p class="card-text">@lang('message.end') {{ $ticket->deadline->format('d M Y') }} |
-                                        {{ $ticket->deadline->format('H:i') }} WIB</p>
-                                    <div>
-                                        <label for="quantity-{{ $ticket->id }}">@lang('message.ticketamount')</label>
-                                        <input type="number" id="quantity-{{ $ticket->id }}" value="0"
-                                            min="0" class="form-control ticket-quantity">
-                                    </div>
+                    @if($ticket->stock <= 0)
+                    {{-- <div class="sold-out-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" 
+                        style="background: rgba(0, 0, 0, 0.6); color: white; z-index: 10; font-size: 1.5rem;">
+                        @lang('message.soldout')
+                    </div> --}}
+                    @endif
+                    <div class="card ticket-option" data-ticket-id="{{ $ticket->id }}"
+                        data-ticket-name="{{ $ticket->name }}" style="width: 30rem; height: 15rem; cursor: pointer;">
+                        <div class="card-body px-4">
+                            <h5 class="card-title">{{ $ticket->name }}</h5>
+                            <div class="fs-6 mt-4">
+                                <p class="card-text">Rp.{{ number_format($ticket->price, 2, ',', '.') }}</p>
+                                <p class="card-text">@lang('message.end') {{ $ticket->deadline->format('d M Y') }} |
+                                    {{ $ticket->deadline->format('H:i') }} WIB</p>
+                                <div>
+                                    <label for="quantity-{{ $ticket->id }}">@lang('message.ticketamount')</label>
+                                    <input type="number" id="quantity-{{ $ticket->id }}" value="0"
+                                        min="0" class="form-control ticket-quantity">
                                 </div>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
 

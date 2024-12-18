@@ -25,6 +25,7 @@
                     <td>
                         <a href="{{ route('admin.detail', ['id' => $event->id]) }}" class="btn btn-primary">View</a>
                         <a href="{{ route('admin.edit', ['id' => $event->id]) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('admin.manageTicket', ['id' => $event->id])}}" class="btn btn-success">Manage Ticket</a>
                         <form action="{{ route('api.event.delete', ['id' => $event->id]) }}" method="POST"
                             style="display: inline-block">
                             @csrf

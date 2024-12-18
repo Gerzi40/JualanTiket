@@ -17,7 +17,7 @@
             <tbody>
                 @foreach ($transactions as $tr)
                     <tr>
-                        <th scope="row">{{ $tr->id }}</th>
+                        <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $tr->event->name }}</td>
                         <td>{{ $tr->ticketcategory->name }}</td>
                         <td>{{ $tr->total_ticket }}</td>

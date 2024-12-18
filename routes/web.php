@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
         ->group(function () {
             Route::post('user/makeTransaction', 'makeTransaction')->name('makeTransaction');
             Route::get('user/TransactionHistory', 'getTransactions')->name('getTransaction');
-            Route::post('user/changeStatus/{id}', 'changeStatus')->name('changeStatus');
+            Route::get('user/changeStatus/{id}', 'changeStatus')->name('changeStatus');
         });
 });
 
@@ -61,8 +61,15 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::get('admin/event/add', 'add')->name('add');
             Route::get('admin/event/{id}', 'detail')->name('detail');
             Route::get('admin/event/{id}/edit', 'edit')->name('edit');
+            Route::get('admin/manageTicket/{id}', 'manageTicket')->name('manageTicket');
+            Route::get('/admin/manageTicket/edit/{id}', 'toEditTicket')->name('toEditTicket');
+            Route::get('/admin/manageTicket/add/{id}', 'toAddTicket')->name('toAddTicket');
+            Route::post('/admin/manageTicket/create', [TicketController::class, 'createTicket'])->name('createTicket');
+            Route::put('/admin/manageTicket/editTicket', [TicketController::class, 'editTicket'])->name('editTicket');
+            Route::delete('/admin/manageTicket/delete/{id}', [TicketController::class, 'deleteTicket'])->name('deleteTicket');
             Route::get('/admin/ticket', [TicketController::class, 'getTickets'])->name('tickethome');
             Route::get('/admin/transaction', [TransactionController::class, 'getAllTransactions'])->name('transaction');
+            
         });
 });
 
