@@ -69,9 +69,11 @@ class TransactionController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
+        $unique_order_id = uniqid('order_', true);
+
         $params = array(
             'transaction_details' => array(
-                'order_id' => $transactions->id,
+                'order_id' => $unique_order_id,
                 'gross_amount' => $transactions->total_price,
             ),
             'customer_details' => array(
@@ -81,7 +83,6 @@ class TransactionController extends Controller
                 'phone' => '08111222333',
             ),
         );
-
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         $transactions->snap_token = $snapToken;
