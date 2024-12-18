@@ -9,13 +9,6 @@ use App\Models\TicketCategory;
 
 class TicketController extends Controller
 {
-    public function getTickets()
-    {
-        $tickets = TicketCategory::all();
-
-        return view('page.admin.tickethome', compact('tickets'));
-    }
-
     public function createTicket(Request $request){
         
         $request->validate([

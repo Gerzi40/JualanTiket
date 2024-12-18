@@ -67,7 +67,6 @@ Route::middleware(['auth:admin'])->group(function () {
             Route::post('/admin/manageTicket/create', [TicketController::class, 'createTicket'])->name('createTicket');
             Route::put('/admin/manageTicket/editTicket', [TicketController::class, 'editTicket'])->name('editTicket');
             Route::delete('/admin/manageTicket/delete/{id}', [TicketController::class, 'deleteTicket'])->name('deleteTicket');
-            Route::get('/admin/ticket', [TicketController::class, 'getTickets'])->name('tickethome');
             Route::get('/admin/transaction', [TransactionController::class, 'getAllTransactions'])->name('transaction');
             
         });
