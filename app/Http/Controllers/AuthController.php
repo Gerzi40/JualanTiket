@@ -72,13 +72,12 @@ class AuthController extends Controller
     {
         $req->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required',
         ], [
             'email.required' => 'The email address is required.',
             'email.email' => 'Please provide a valid email address.',
 
             'password.required' => 'A password is required.',
-            'password.min' => 'The password must be at least 8 characters.',
         ]);
 
         $credentials = $req->only('email', 'password');

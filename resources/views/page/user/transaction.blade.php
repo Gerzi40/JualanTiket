@@ -54,17 +54,13 @@
     </div>
 @endsection
 
-
-{{-- <script>
-    // Populate the QR code dynamically when the modal opens
-    var qrModal = document.getElementById('qrModal');
-    qrModal.addEventListener('show.bs.modal', function (event) {
-        // Button that triggered the modal
-        var button = event.relatedTarget;
-        // Extract QR code data from data-* attributes
-        var qrCode = button.getAttribute('data-qrcode');
-        // Update the modal content
-        var qrImage = document.getElementById('qrCodeImage');
-        qrImage.src = qrCode;
-    });
-</script> --}}
+@section('scripts')
+    <script>
+        document.querySelectorAll('.modal-backdrop').forEach(backdrop => backdrop.remove());
+        var qrModal = new bootstrap.Modal(document.getElementById('qrModal'), {
+            backdrop: false
+        });
+        qrModal.show();
+        qrModal.hide();
+    </script>
+@endsection
