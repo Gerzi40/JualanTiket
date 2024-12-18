@@ -51,7 +51,10 @@ class EventController extends Controller
             'price' => 'required|numeric',
             'location' => 'required',
             'date' => 'required|date',
-            'time' => 'required|date_format:H:i',
+            'time' => [
+                'required',
+                'regex:/^([01]?[0-9]|2[0-3]):[0-5][0-9]\s*-\s*([01]?[0-9]|2[0-3]):[0-5][0-9]$/'
+            ],
             'description' => 'required',
             'terms' => 'required',
             'admin_id' => 'required',
