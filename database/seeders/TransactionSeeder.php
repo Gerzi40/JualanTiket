@@ -32,6 +32,7 @@ class TransactionSeeder extends Seeder
                 'total_price' => 200,
                 'total_ticket' => $faker->randomDigitNot(0),
                 'transaction_dateTime' => $faker->dateTime(),
+                'snap_token' => '',
                 'status' => 'paid',
             ]);
         }
