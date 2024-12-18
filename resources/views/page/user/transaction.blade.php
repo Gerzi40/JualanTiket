@@ -60,7 +60,5 @@
         var qrModal = new bootstrap.Modal(document.getElementById('qrModal'), {
             backdrop: false
         });
-        qrModal.show();
-        qrModal.hide();
     </script>
 @endsection
