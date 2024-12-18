@@ -36,6 +36,10 @@
             align-items: center;
         }
 
+        .uploadPoster img{
+            max-width: 1000px;
+        }
+
         #poster {
             display: none;
         }

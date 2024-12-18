@@ -79,10 +79,24 @@ class EventController extends Controller
             'price' => 'required|numeric',
             'location' => 'required',
             'date' => 'required|date',
-            'time' => 'required|date_format:H:i',
+            'time' => [
+                'required',
+                'regex:/^([01]?[0-9]|2[0-3]):[0-5][0-9]\s*-\s*([01]?[0-9]|2[0-3]):[0-5][0-9]$/'
+            ],
             'description' => 'required',
             'terms' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg'
         ]);
+
+        if ($req->hasFile('image') && $req->file('image')->isValid()) {
+            $posterFile = $req->file('image');
+            $posterPath = 'assets/events';
+            $posterName = $posterFile->getClientOriginalName();
+
+            $posterFile->move(public_path($posterPath), $posterName);
+
+            $data['image'] = "$posterPath/$posterName";
+        }
 
         $event = Event::find($req->id);
         $event->price = $req->price;
@@ -91,6 +105,7 @@ class EventController extends Controller
         $event->time = $req->time;
         $event->description = $req->description;
         $event->terms = $req->terms;
+        $event->image = $data['image'];
         $event->save();
 
         return redirect()->route('admin.home');

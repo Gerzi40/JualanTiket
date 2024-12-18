@@ -21,6 +21,10 @@
             right: 0;
         }
 
+        img{
+            max-width: 1000px;
+        }
+
     </style>
 
 @endsection
