@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -23,32 +24,46 @@ class AuthController extends Controller
 
     public function attemptRegister(Request $req)
     {
-        try {
-            $data = $req->only([
-                'name',
-                'phone',
-                'email',
-                'password',
-                'dob',
-                'gender'
+
+        $data = $req->validate([
+            'name' => 'required|min:3|max:50',
+            'phone' => 'required|digits_between:10,15',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'dob' => 'required|date|before:today',
+            'gender' => 'required|in:male,female'
+        ], [
+            'name.required' => 'The username is required.',
+            'name.min' => 'The username must be at least 3 characters.',
+            'name.max' => 'The username may not be greater than 50 characters.',
+
+            'phone.required' => 'The phone number is required.',
+            'phone.digits_between' => 'The phone number must be between 10 and 15 digits.',
+
+            'email.required' => 'The email address is required.',
+            'email.email' => 'Please provide a valid email address.',
+
+            'password.required' => 'A password is required.',
+            'password.min' => 'The password must be at least 8 characters.',
+
+            'dob.required' => 'The date of birth is required.',
+            'dob.date' => 'Please provide a valid date of birth.',
+            'dob.before' => 'The date of birth must be a past date.',
+
+            'gender.required' => 'The gender is required.',
+            'gender.in' => 'The gender must be one of the following: male and female',
+        ]);
+
+        $exist = User::where('email', '=', $data['email'])->first();
+        $exist2 =  Admin::where('email', '=', $data['email'])->first();
+
+        if ($exist != null || $exist2 != null) {
+            return redirect()->route('register')->withErrors([
+                'email' => 'Account already exists.',
             ]);
-
-            $exist = User::where('email', '=', $data['email'])->first();
-
-            if ($exist != null) {
-                return response()->json([
-                    'status' => 1,
-                    'message' => 'Account Already Exists'
-                ], 422);
-            }
-
-            User::create($data);
-        } catch (\Exception $e) {
-            return response()->json([
-                'status' => 1,
-                'message' => $e
-            ], 422);
         }
+
+        User::create($data);
 
         return redirect()->route('login');
     }
@@ -56,8 +71,14 @@ class AuthController extends Controller
     public function attemptLogin(Request $req)
     {
         $req->validate([
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ], [
+            'email.required' => 'The email address is required.',
+            'email.email' => 'Please provide a valid email address.',
+
+            'password.required' => 'A password is required.',
+            'password.min' => 'The password must be at least 8 characters.',
         ]);
 
         $credentials = $req->only('email', 'password');
@@ -83,7 +104,8 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('home');
     }
