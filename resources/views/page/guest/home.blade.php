@@ -15,6 +15,8 @@
                 <div class="card" style="width: 18rem;">
                     <img src="{{ asset($event->image) }}" class="card-img-top" alt="Event image">
                     <div class="card-body d-flex flex-column">
+                    <img src="{{ asset($event->image) }} " class="card-img-top" alt="ini image" style="height:160px; object-fit:cover;">
+                    <div class="card-body">
                         <h5 class="card-title">{{ $event->name }}</h5>
                         <p class="card-text">{{ $event->date->format('d M Y') }}</p>
                         <p class="card-text">{{ $event->location }}</p>
