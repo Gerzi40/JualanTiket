@@ -13,3 +13,9 @@
 .text-d {
     color: #2D3142 !important;
 }
+
+
+input.input-search:focus {
+    border-color: #EF8354;
+    box-shadow: 0 0 10px rgba(239, 131, 84, 0.2);
+}

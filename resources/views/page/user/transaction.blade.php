@@ -25,7 +25,7 @@
                         <td>{{ $tr->created_at->format('d M Y') }}</td>
                         <td>
                             <!-- Show QR Button -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#qrModal"
+                            <button type="button" class="btn bg-o" data-bs-toggle="modal" data-bs-target="#qrModal"
                                 data-id="{{ $tr->id }}" data-qrcode="{{ $tr->qrcode }}">
                                 @lang('message.showqr')
                             </button>

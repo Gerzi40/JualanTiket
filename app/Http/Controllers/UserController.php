@@ -19,19 +19,36 @@ class UserController extends Controller
 
     public function getEventList(Request $req)
     {
-        $sort = $req->query('sort');
+        $query = Event::query();
 
-        if ($sort && $sort != "") {
-            $events = Event::orderBy($sort, 'asc')->paginate(2);
-        } else {
-            $events = Event::paginate(2);
+        if ($req->has('inputSearch') && $req->input('inputSearch') !== '') {
+            $query->where('name', 'LIKE', '%' . $req->input('inputSearch') . '%');
         }
+
+        $sort = $req->input('sort');
+        if ($sort && in_array($sort, ['name', 'price', 'date'])) {
+            if ($sort == 'price') {
+                $query->orderByRaw('CAST(price AS DECIMAL(10, 2)) ASC');
+            } else {
+                $query->orderBy($sort, 'asc');
+            }
+        }
+
+        $events = $query->paginate(4);
+        $events->appends($req->except('page'));
+
         return view('page.user.event', compact('events'));
     }
 
+
+
+
+
+
+
     public function searchEvent(Request $req)
     {
-        $events = Event::where('name', 'LIKE', '%' . $req->inputSearch . '%')->paginate(2);
+        $events = Event::where('name', 'LIKE', '%' . $req->inputSearch . '%')->paginate(4);
 
         return view('page.user.event', compact('events'));
     }

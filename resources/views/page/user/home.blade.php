@@ -13,13 +13,14 @@
         <div class="d-flex flex-wrap gap-5 justify-content-center">
             @foreach ($events as $event)
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ asset($event->image) }}" class="card-img-top" alt="ini image" style="height:160px; object-fit:cover;">
-                    <div class="card-body">
+                    <img src="{{ asset($event->image) }}" class="card-img-top" alt="ini image"
+                        style="height:160px; object-fit:cover;">
+                    <div class="card-body  d-flex flex-column">
                         <h5 class="card-title">{{ $event->name }}</h5>
                         <p class="card-text">{{ $event->date->format('d M Y') }}</p>
                         <p class="card-text">{{ $event->location }}</p>
                         <p class="card-text">Rp. {{ number_format($event->price, 2, ',', '.') }}</p>
-                        <a href="{{ route('user.userEventDetail', ['id' => $event->id]) }}" class="btn"
+                        <a href="{{ route('user.userEventDetail', ['id' => $event->id]) }}" class="btn mt-auto"
                             style="background-color: #EF8354; color: #2D3142">@lang('message.detail')</a>
                     </div>
                 </div>
